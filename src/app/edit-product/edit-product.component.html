@@ -1,0 +1,30 @@
+<div class="mt-3 col-md-6 offset-md-3">
+  <form [formGroup]="productFormGroup" (ngSubmit)="handleUpdateProduct()" >
+    <div class="mb-3">
+      <label class="form-label">ID</label>
+      <input disabled type="text" class="form-control"  value="{{product.id}}" >
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" >
+      <small *ngIf="productFormGroup.controls['name'].errors && productFormGroup.controls['name'].touched" class="text-danger"  >
+        {{prodService.getErrorMessage('Name',productFormGroup.controls['name'].errors)}}
+      </small>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="text" class="form-control" formControlName="price" >
+      <small *ngIf="productFormGroup.controls['price'].errors && productFormGroup.controls['price'].touched" class="text-danger"  >
+        {{prodService.getErrorMessage('Price',productFormGroup.controls['price'].errors)}}
+      </small>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Promotion</label>
+      <input type="checkbox" class="form-check"  formControlName="promotion" >
+    </div>
+    <button [disabled]="productFormGroup.invalid" class="btn btn-info" type="submit">Save</button>
+
+  </form>
+
+</div>
